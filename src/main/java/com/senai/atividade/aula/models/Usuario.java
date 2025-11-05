@@ -32,6 +32,11 @@ public class Usuario {
     @Column (name = "CPF")
     private String CPF;
 
+    
+
+    public Usuario() {
+    }
+
     public Usuario(Integer id, String nome, String email, LocalDate dataNascimento, String senha, String cPF) {
         this.id = id;
         this.nome = nome;
