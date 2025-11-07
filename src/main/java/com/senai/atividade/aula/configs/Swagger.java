@@ -8,9 +8,9 @@ import io.swagger.v3.oas.annotations.info.Info;
 @Configuration
 @OpenAPIDefinition(
     info = @Info(
-        title = "Atividade-03/11",
+        title = "Atividade-03/11 - Site empresarial",
         version = "1.0",
-        description = ""
+        description = "Grupo - Gabriel Maiworm | Rebeca Coelho | Arthur Correia | Gabriel Teodoro | Arthur Mayworm | Ana Clara Saldanha"
     )
 )
 
