@@ -20,17 +20,12 @@ public class UsuarioService {
     }
 
     // Método para verificar login
-    public boolean verificarLogin(String email, String senha) {
-        Usuario usuario = usuarioRepository.findByEmailAndSenha(email, senha);
-        return usuario != null; // Retorna true se encontrou um usuário com as credenciais
-    }
+    public String login(String email, String senha){
+      Usuario usuario = usuarioRepository.findByEmail(email);
+      if(usuario != null && senha.equals(usuario.getSenha())){
+        return "Login efetuado com sucesso";
+      }
+      return "Falha ao realizar o login";
 
-    // (Opcional) Retorna o próprio usuário, caso queira usar as informações após login
-    public Usuario buscarUsuarioPorEmail(String email) {
-        return usuarioRepository.findAll()
-                .stream()
-                .filter(u -> u.getEmail().equals(email))
-                .findFirst()
-                .orElse(null);
     }
 }
