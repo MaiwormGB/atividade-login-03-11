@@ -6,10 +6,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="usuário")
+@Table(name="usuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -32,18 +34,21 @@ public class Usuario {
     @Column (name = "CPF")
     private String CPF;
 
-    
+    @ManyToOne
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
 
     public Usuario() {
     }
 
-    public Usuario(Integer id, String nome, String email, LocalDate dataNascimento, String senha, String cPF) {
+    public Usuario(Integer id, String nome, String email, LocalDate dataNascimento, String senha, String cPF, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.dataNascimento = dataNascimento;
         this.senha = senha;
-        CPF = cPF;
+        this.CPF = cPF;
+        this.endereco = endereco;
     }
 
     public Integer getId() {
@@ -92,6 +97,14 @@ public class Usuario {
 
     public void setCPF(String cPF) {
         CPF = cPF;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     

@@ -1,5 +1,7 @@
 package com.senai.atividade.aula.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +30,20 @@ public class UsuarioService {
       return "Falha ao realizar o login";
 
     }
+
+      public Usuario buscarUsuario(Integer id) {
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+        return usuario.orElse(null);
+    }
+ public Usuario atualizar(Usuario usuario, Integer id) {
+        Usuario existente = buscarUsuario(id);
+
+        if (existente != null) {
+            usuario.setId(id);
+            return usuarioRepository.save(usuario);
+        } else {
+            return null;
+        }
+    }
+
 }
